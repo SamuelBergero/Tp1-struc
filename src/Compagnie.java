@@ -1,3 +1,6 @@
+/*
+ *  @authors Samuel Bergeron, Mathieu Landreville, Ramatoulaye Barry
+ */
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,11 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Compagnie {
+	//Variable
 	String nom;
 	private List<Chauffeur> chauffeurs;
 	private List<Limousine> limousines;
 	private List<Trajet> trajets;
 	
+	//Constructeur Compagnie
 	public Compagnie(String nom, String chauffeur, String limousine, String trajet) 
 	{
 		this.nom = nom;
@@ -25,7 +30,8 @@ public class Compagnie {
 		ajoutChauf(chauffeur);
 		ajoutTrajet(trajet);
 	}
-	//
+	
+	//Méthode pour ajouter un chauffeur à la liste
 	private void ajoutChauf(String filePath) {
 
 		File file = new File(filePath);
@@ -62,7 +68,8 @@ public class Compagnie {
 
 		
 	}
-
+	
+	//Méthode pour ajouter une limousine à la liste
 	private void ajoutLimousine(String filePath) {
 		File file = new File(filePath);
 		try (FileInputStream fis = new FileInputStream(file);
@@ -95,6 +102,7 @@ public class Compagnie {
 
 	}
 	
+	//Méthode pour ajouter un trajet à la lsite
 	private void ajoutTrajet(String filePath) {
 		File file = new File(filePath);
 		try (FileInputStream fis = new FileInputStream(file);
@@ -155,7 +163,8 @@ public class Compagnie {
 		}
 
 	}
-
+	
+	//Interface
 	private <T extends IGettable> T find(String num, List<? extends IGettable> list, Class<T> type){
 		for(IGettable item : list) {
 			if(item.getUniqueNumber().equals(num)) {
@@ -165,8 +174,8 @@ public class Compagnie {
 		return null;
 	}
 	
-	//
 	
+	//Get pour afficher les trajets d'une limousine
 	public String getTrajetLimousine(String plaque) 
 	{
 		try 
@@ -178,7 +187,8 @@ public class Compagnie {
 			return null;
 		}
 	}
-
+	
+	//Méthode pour afficher les trajets d'une limousione
 	private String affToutTrajetLimousine(String plaque) 
 	{
 		String returnText = "";
@@ -194,17 +204,9 @@ public class Compagnie {
 		}
 		return returnText;
 	}
-
-	public String[] getListOf(List<IGettable> list) 
-	{
-		String [] returnTable = new String[list.size()];
-		for(int i = 0; i < list.size(); i++) 
-		{
-			returnTable[i] = list.get(i).getUniqueNumber();
-		}
-		return returnTable;
-	}
-
+	
+	
+	//Méthode pour affichage des trajets
 	public String affTrajets() 
 	{
 		String returnString = "";
@@ -216,7 +218,8 @@ public class Compagnie {
 		return returnString;
 		
 	}
-
+	
+	//Méthode pour affichage du chauffeur d'une limousine
 	public String affChauffeurLimousine(String numChauffeur) 
 	{
 		
@@ -229,7 +232,8 @@ public class Compagnie {
 			return "\nAucune limousine n'a été trouvé pour ce chauffeur";
 		}
 	}
-
+	
+	//Get des chauffeurs
 	public String getAllChauffeur() {
 		String returnString = "";
 		for(Chauffeur chauffeur: chauffeurs) 
@@ -239,6 +243,7 @@ public class Compagnie {
 		return returnString;
 	}
 	
+	//Get des limousines
 	public String getAllLimousine() {
 		String returnString = "";
 		for(Limousine limousine: limousines) 

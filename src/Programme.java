@@ -1,9 +1,15 @@
+/*
+ *  @authors Samuel Bergeron, Mathieu Landreville, Ramatoulaye Barry
+ */
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Programme {
+	//Variable
 	static Compagnie compagnie;
 	static Scanner scan = new Scanner(System.in);
+	
+	//Main avec switch
 	public static void main(String[] args) {
 		compagnie = new Compagnie("autoDeluxe",args[0],args[1],args[2]);
 		boolean arret = false;
@@ -27,7 +33,8 @@ public class Programme {
 			}
 		}
 	}
-
+	
+	//Méthode pour le menu principal
 	public static int menu() {
 		try {
 			System.out.println("----Menu----");
@@ -45,7 +52,8 @@ public class Programme {
 		}
 
 	}
-
+	
+	//Méthode pour afficher les limousines liées à un chauffeur
 	public static void trouverTouteLimouse() 
 	{
 		System.out.println("Entrer le numéro du chauffeur");
@@ -57,7 +65,8 @@ public class Programme {
 		System.out.println(compagnie.affChauffeurLimousine(reponse));
 		
 	}
-
+	
+	//Méthode pour afficher le trajet d'une limousine
 	public static void afficherTrajet() 
 	{
 		System.out.println("Entrer de plaque de la limousine");

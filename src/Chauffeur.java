@@ -1,11 +1,16 @@
+/*
+ *  @authors Samuel Bergeron, Mathieu Landreville, Ramatoulaye Barry
+ */
 import java.util.ArrayList;
 import java.util.List;
 
 public class Chauffeur implements IGettable{
+	//Variable
 	private String nom, prenom, annee, address, num;
 	private List<Trajet> trajets;
 	private List<Limousine> limousines;
 	
+	//Constructeur Chauffeur
 	public Chauffeur(String nom, String prenom, String annee, String address) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -42,7 +47,7 @@ public class Chauffeur implements IGettable{
 		limousines.add(limo);
 	}
 
-	//
+	//Méthode pour la création d'un numéro unique
 	
 	private String creationNum() {
 	        String num="";
@@ -94,7 +99,8 @@ public class Chauffeur implements IGettable{
 	        num = num.toLowerCase();
 	        return num;
 	    }
-
+	
+	//Méthode toString
 	public String toString() 
 	{
 		return prenom + " " + nom + "\nNuméro d'identification: " + num + "\nAnnée d,embauche: " + annee + "\nAddresse: " + address;
